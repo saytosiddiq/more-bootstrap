@@ -1,0 +1,91 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="assets/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="assets/more-bootstrap.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="row padding-10">
+				<p><strong>Method Name</strong> : $.formatDateTime</p>
+				<div class="col-md-6">
+					<h4>Usage</h4>
+					<div class="form-group">
+						<label>Syntax</label><br>
+						<code>$.formatDateTime(input_date, format_to_convert)</code>
+					</div>
+					<div class="form-group">
+						<label>Examples</label><br>
+						<span>$.formatDateTime("11-27-2019 05:45:17", "MM-dd-yyyy hh:mm:ss")</span></br>
+						<span>$.formatDateTime("03-17-1999", "dd-MMM-yyyy")</span>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<h4>Demo</h4>
+					<div class="form-group">
+						<label>Please enter a datetime</label><br>
+						<span><strong>Note</strong> : Input date should be in <code>Month-Date-Year Hours:Minutes:Seconds</code> Format</span><br><br>
+						<input id="DATE_VALUE" type="text" class="form-control">
+					</div>
+					<div class="form-group">
+						<label>Please select a format</label>
+						<select id="DATE_FORMAT" class="form-control">
+							<option value="">Select Format</option>
+							<option value="MM-dd-yyyy">MM-dd-yyyy</option>
+							<option value="dd-MM-yyyy">dd-MM-yyyy</option>
+							<option value="yyyy-MM-dd">yyyy-MM-dd</option>
+							<option value="MMM-dd-yyyy">MMM-dd-yyyy</option>
+							<option value="dd-MMM-yyyy">dd-MMM-yyyy</option>
+							<option value="yyyy-MMM-dd">yyyy-MMM-dd</option>
+							<option value="MM/dd/yyyy">MM/dd/yyyy</option>
+							<option value="dd/MM/yyyy">dd/MM/yyyy</option>
+							<option value="yyyy/MM/dd">yyyy/MM/dd</option>
+							<option value="EEE,MMM dd,yyyy">EEE, MMM dd, yyyy</option>
+							<option value="EEE,MMM dd,yy">EEE, MMM dd, 'yy</option>
+							<option value="MM-dd-yyyy hh:mm:ss">MM-dd-yyyy hh:mm:ss</option>
+							<option value="dd-MM-yyyy hh:mm:ss">dd-MM-yyyy hh:mm:ss</option>
+							<option value="yyyy-MM-dd hh:mm:ss">yyyy-MM-dd hh:mm:ss</option>
+							<option value="MM/dd/yyyy hh:mm:ss">MM/dd/yyyy hh:mm:ss</option>
+							<option value="dd/MM/yyyy hh:mm:ss">dd/MM/yyyy hh:mm:ss</option>
+							<option value="yyyy/MM/dd hh:mm:ss">yyyy/MM/dd hh:mm:ss</option>
+							<option value="hh.mm">hh.mm</option>
+							<option value="hh.mm.ss">hh.mm.ss</option>
+							<option value="hh.mm.ss.S">hh.mm.ss.S</option>
+							<option value="hh:mm">hh:mm</option>
+							<option value="hh:mm:ss">hh:mm:ss</option>
+							<option value="hh:mm:ss:S">hh:mm:ss:S</option>
+							<option value="hh:mm:a">hh:mm a (AM/PM)</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<label>Output</label>
+						<input id="DATE_RESULT" disabled="disabled" class="form-control"></input>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="assets/jquery.js"></script>
+		<script type="text/javascript" src="assets/more-bootstrap.js"></script>
+	</body>
+</html>
+<script>
+	$(function() {
+		
+		$("#DATE_FORMAT").on("change", function() {
+			var $this = $(this);
+			var date = $("#DATE_VALUE").val();
+			if($this.val() && date) {
+				$("#DATE_RESULT").val($.formatDateTime(date, $this.val()));
+			} else {
+				$("#DATE_RESULT").val("");
+			}
+		});
+		
+		$("#FIND_EQ").on("click", function() {
+			$("#EQ_RESULT").val($.equals($(".eq-first-input").val(), $(".eq-second-input").val()));
+		});
+		
+		$("#FIND_EX").on("click", function() {
+			$("#EX_RESULT").val($.exactEquals($(".ex-first-input").val(), $(".ex-second-input").val()));
+		});
+	});
+</script>
